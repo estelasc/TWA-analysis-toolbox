@@ -54,7 +54,8 @@ To install and run the algorithm, follow these steps:
    ```bash
    git clone https://github.com/estelasc/TWA-analysis-toolbox.git
 2. **Navigate to the cloned directory.**
-   cd Interpretable-MnL-for-TWA-Assessment-with-ECGI
+   ```bash
+   cd TWA-analysis-toolbox
 3. **Open MATLAB**.
 4. **Set the current folder to the location** where you downloaded the repository
 5. **Add the repository to your MATLAB path**
@@ -64,25 +65,25 @@ To install and run the algorithm, follow these steps:
 
 The repository is organized as follows:
 
-```plaintext
-TWA-analysis-toolbox/
-├── main.m               							# The main script with an example to run the TWA detection algorithm     
-├── data/                      					# Directory containing synthetic data created from the [EDGAR repository](https://www.ecg-imaging.org/edgar-database)
-│   └── data.mat         							# ECGI epicardial data for testing and demonstration
-├── functions/                      			# Directory containing functions for generating synthetic subjects, filtering signals, and applying the TWA algorithm and MC-WindowSHAP
-│   └── add_BW.m 									# Function for adding baseline noise
-│   └── add_high_freq_noise.m 					# Function for adding high-frequency noise
-│   └── add_TWA.m 									# Function for adding synthetic alternans
-│   └── ApplyMC_WindowSHAP.m 					# Function for applying the customized interpretability algorithm
-│   └── bootstrapping.m 							# Function for applying Bootstrap resampling
-│   └── calculateCI.m 							# Function for calculating confidence intervals
-│   └── evaluateTWA.m 							# Function for taking a decision on the presence or absence of TWA
-│   └── low_pass_filter.m 						# Function for filtering high-frequency noise
-│   └── MnL_based_TWA_detection_algorithm.m 	# Function where the MnL-based TWA detection algorithm is applied
-│   └── spline_detrending_filter.m 				# Function for detrending the ECG signals
-│   └── SRS.m 										# Function for segmenting T-waves with the Single Reference Segmentation method
-├── LICENSE                     					# License information for the project
-└── README.md                  					# This README file
+	```plaintext
+	TWA-analysis-toolbox/
+	├── main.m               			# The main script with an example to run the TWA detection algorithm     
+	├── data/                      		# Directory containing synthetic data created from the [EDGAR repository](https://www.ecg-imaging.org/edgar-database)
+	│   └── data.mat         			# ECGI epicardial data for testing and demonstration
+	├── functions/                      		# Directory containing functions for generating synthetic subjects, filtering signals, and applying the TWA algorithm and MC-WindowSHAP
+	│   └── add_BW.m 				# Function for adding baseline noise
+	│   └── add_high_freq_noise.m 			# Function for adding high-frequency noise
+	│   └── add_TWA.m 				# Function for adding synthetic alternans
+	│   └── ApplyMC_WindowSHAP.m 			# Function for applying the customized interpretability algorithm
+	│   └── bootstrapping.m 			# Function for applying Bootstrap resampling
+	│   └── calculateCI.m 				# Function for calculating confidence intervals
+	│   └── evaluateTWA.m 				# Function for taking a decision on the presence or absence of TWA
+	│   └── low_pass_filter.m 			# Function for filtering high-frequency noise
+	│   └── MnL_based_TWA_detection_algorithm.m 	# Function where the MnL-based TWA detection algorithm is applied
+	│   └── spline_detrending_filter.m 		# Function for detrending the ECG signals
+	│   └── SRS.m 					# Function for segmenting T-waves with the Single Reference Segmentation method
+	├── LICENSE                     		# License information for the project
+	└── README.md                  		# This README file
 
 ## License
 
@@ -107,7 +108,6 @@ If you use this code in your research or find it helpful, please cite our papers
 **Estela Sánchez-Carballo, Francisco Manuel Melgarejo-Meseguer, Ramya Vijayakumar, Juan José Sánchez-Muñoz, Arcadi García-Alberola, Yoram Rudy and José Luis Rojo-Álvarez**, "Interpretable Manifold Learning for T-Wave Alternans Assessment with Electrocardiographic Imaging", *submitted to Engineering Applications of Artificial Intelligence*.
 
 For further details on how to properly attribute this work, please refer to the [CC BY license summary](https://creativecommons.org/licenses/by/4.0/).
-
 
 ## Contact
 
