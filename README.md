@@ -130,6 +130,7 @@ Once the T-waves are segmented, even and odd T-wave templates are created for ea
 
 	<img src="figures/TWAsignals.png" alt="Alternan signals" width="50%"/>
 
+
 ### 2. TWA Detection Method Results
 
 Once the TWA detection algorithm has been applied, the following results will be generated:
@@ -139,7 +140,7 @@ Once the TWA detection algorithm has been applied, the following results will be
   - A 3D figure of the epicardial mesh is shown, with the area affected by TWA colored either in red (if our method detects TWA) or purple (if our method does not detect TWA). This visualization allows the user to see not only whether TWA is present, but also the specific region of the heart where it is located.
 
 	<div style="display: flex;">
-  	  <div style="padding-right: 20px;">
+  	  <div style="padding-right: 5px;">
     	    <img src="figures/embedded_space.png" alt="Embedded space" width="30%"/>
   	  </div>
   	  <div>
