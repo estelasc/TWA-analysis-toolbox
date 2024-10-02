@@ -128,7 +128,7 @@ When the code is executed, the user will be prompted with a figure that requires
 
 Once the T-waves are segmented, even and odd T-wave templates are created for each mesh point. For each mesh point, the corresponding even and odd templates are subtracted from one another to generate **alternan signals**, which serve as the input for the TWA detection algorithm.
 
-	![Alternan signals](figures/TWAsignals.png)
+	<img src="figures/TWAsignals.png" alt="Alternan signals" width="50%"/>
 
 ### 2. TWA Detection Method Results
 
