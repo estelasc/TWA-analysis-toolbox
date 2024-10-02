@@ -127,12 +127,10 @@ Once the TWA detection algorithm has been applied, the following results will be
 
 - **Latent Space Representation**:
   - A figure displaying the latent space, where the community with detected TWA is highlighted in red, and the rest of the embedding is shown in green.
-	![Embedded space](figures/embedded_space.png)
 	<img src="figures/embedded_space.png" alt="Embedded space" width="50%"/>
   
 - **Epicardial Mesh Visualization**:
   - A 3D figure of the epicardial mesh is shown, with the area affected by TWA colored either in red (if our method detects TWA) or purple (if our method does not detect TWA). This visualization allows the user to see not only whether TWA is present, but also the specific region of the heart where it is located.
-	![Epicardial mesh](figures/mesh.png)
 	<img src="figures/mesh.png" alt="Epicardial mesh" width="50%"/>
 
 - **TWA Detection Confidence**:
@@ -180,10 +178,13 @@ For further details on how to properly attribute this work, please refer to the 
 For any questions, suggestions and comments feel free to reach out:
 
 - **Estela Sánchez-Carballo**
+  Department of Signal Theory and Communications, Telematics, and Computing, Universidad Rey Juan Carlos, Fuenlabrada, Madrid, Spain
   
   https://github.com/estelasc
 
   Email: estela.sanchezc@urjc.es
+
+  LinkedIn: [Estela Sánchez-Carballo](www.linkedin.com/in/estela-sánchez-carballo-1151a821b)
 
 You can also create an issue in this repository if you encounter any bugs or have suggestions for improvements.
 
