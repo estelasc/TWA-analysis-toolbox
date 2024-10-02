@@ -140,7 +140,7 @@ Once the TWA detection algorithm has been applied, the following results will be
 
 	<span>
   	  <img src="figures/embedded_space.png" alt="Embedded space" width="30%"/>
-	</span><br><br><br>
+	</span><br>
 	<span>
   	  <img src="figures/mesh.png" alt="Epicardial mesh" width="25%"/>
 	</span>
@@ -157,14 +157,13 @@ Once the TWA detection algorithm has been applied, the following results will be
 
 - **Explainability with Shapley Values**:
   - Shapley values are used to provide further explainability of the model's decision. The ECG signals are divided into 5 windows, and the importance of different latent dimensions is highlighted.
+
+	<img src="figures/shap1.png" alt="Shapley values" width="50%"/>
+
   - The signals from the most important window, which contributed the most to projecting the ECGI data into the latent space for the TWA community, are also displayed.
 
-	<span>
-  	  <img src="figures/shap1.png" alt="Shapley values" width="50%"/>
-	</span>
-	<span>
-  	  <img src="figures/shap2.png" alt="Important window according to MC-WindowSHAP" width="50%"/>
-	</span>
+	<img src="figures/shap2.png" alt="Important window according to MC-WindowSHAP" width="50%"/>
+
 
 These visualizations provide not only detection but also insights into how and why the TWA was detected, enhancing both interpretability and explainability of the results.
 
