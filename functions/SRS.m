@@ -14,7 +14,7 @@ step = 10;
 L_s = size(s,2);
 taux = 1:step:L_s;
 s_now = s(pt,taux);
-rs = s_now > 9.7; %threshold
+rs = s_now > 9.7;
 r_pos = find(rs == 1);
 for r_wave_loc = 1:length(r_pos)-1
     if r_pos(r_wave_loc) == r_pos(r_wave_loc+1)-1

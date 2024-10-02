@@ -26,14 +26,14 @@ function TWAstate = evaluateTWA(distances,targetDist)
 
     figure(3)
     histogram(medians); hold on;
-    stem(dataIC(2:3),[0 0],'filled','*','LineWidth',10,'Color',[.7 .7 .7])
+    stem(dataIC(2:3),[0 0],'filled','*','LineWidth',10,'Color',[0.8 1 0.8])
 
     if targetDist > dataIC(3)
         TWAstate = 1;
-        hold on; stem(targetDist,0,'filled','*','LineWidth',10,'Color',[.7 .2 .2])
+        hold on; stem(targetDist,0,'filled','*','LineWidth',10,'Color',[.64 0 .15])
     else
         TWAstate = 0;
-        hold on; stem(targetDist,0,'filled','*','LineWidth',10,'Color',[.56 .82 .88])
+        hold on; stem(targetDist,0,'filled','*','LineWidth',10,'Color',[.46 .38 .54])
     end
     hold off; xlabel('Estimator'); ylabel('counts'); 
 

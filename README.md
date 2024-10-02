@@ -1,6 +1,13 @@
-# Code for TWA Analysis
+# Code for TWA Analysis with ECG Imaging
 
-This repository contains MATLAB code for generating synthetic subjects by introducing noise, applying a specific method for segmenting T-waves tailored to electrocardiographic imaging (ECGI) data, performing preprocessing steps, and implementing a novel T-wave Alternans (TWA) detection method designed specifically for ECGI data. The method combines manifold learning, community detection, and Bootstrap resampling techniques to enhance detection accuracy. Additionally, an interpretability algorithm based on Shapley Additive Explanations (SHAP) has been adapted for use with time series data, providing insights into the detected TWA patterns.
+This repository contains MATLAB code for the analysis of T-wave alternans (TWA) using electrocardiographic imaging (ECGI).
+
+It includes:
+- Noise generation methods to make synthetic subjects more realistic.
+- Developed low-pass and detrending filters to remove noise from ECG signals.
+- Implementation of the Single Reference Segmentation (SRS) method, a T-wave segmentation technique specifically tailored for ECGI data.
+- Implementation of a novel TWA detection method designed specifically for ECGI data. This method combines manifold learning, community detection, and bootstrap resampling techniques to enhance detection accuracy.
+- Implementation of MC-WindowSHAP, an interpretability algorithm based on Shapley Additive Explanations (SHAP), adapted for use with time series data to improve the explainability of the novel TWA detection method.
 
 ## Table of Contents
 1. [Overview](#overview)
@@ -19,7 +26,7 @@ The code contains:
 - **Noise addition**: Add baseline noise and high-frequency noise to clean ECG signals to make them more realistic.
 - **Add synthetic alternans**: Add synthetic alternans to generate controlled cases.
 - **Preprocessing**: Apply a detrending filter and a low-pass filter to clean ECG signals.
-- **Segment T-waves**: Segment T-waves with a method specifically tailored to ECGI data.
+- **Segment T-waves**: Segment T-waves with the SRS method, which is specifically tailored to ECGI data.
 - **TWA detection algorithm**: Novel TWA detection algorithm that employs:
 	- **Manifold Learning**: Reduces the dimensionality of ECGI data while preserving its intrinsic geometry.
 	- **Community Detection**: Clusters the reduced data to identify regions where TWA is likely present.
@@ -30,6 +37,7 @@ This method provides a powerful, interpretable tool for TWA detection in high-di
 
 ## Features
 
+- **T-wave Segmentation with the SRS method**: Segment T-waves by leveraging the synchronized functioning of the heart. This method is particularly efficient when applied to ECGI data.
 - **Dimensionality Reduction with Uniform Manifold Approximation and Projection (UMAP)**: Projects high-dimensional ECGI data into a lower-dimensional space, preserving both the local and global structure of the original data.
 - **Community Detection with the Louvain algorithm for TWA Identification**: Leverages graph-based clustering to detect regions of TWA.
 - **Bootstrap Resampling**: Provides robust statistical validation of the detected patterns by generating confidence intervals around the results.
@@ -59,6 +67,7 @@ To install and run the algorithm, follow these steps:
 3. **Open MATLAB**.
 4. **Set the current folder to the location** where you downloaded the repository
 5. **Add the repository to your MATLAB path**
+   ```bash
    addpath(genpath('TWA-analysis-toolbox'))
 
 ## File Structure
@@ -68,7 +77,7 @@ The repository is organized as follows:
 	```plaintext
 	TWA-analysis-toolbox/
 	├── main.m               			# The main script with an example to run the TWA detection algorithm     
-	├── data/                      		# Directory containing synthetic data created from the [EDGAR repository](https://www.ecg-imaging.org/edgar-database)
+	├── data/                      			# Directory containing synthetic data created from the [EDGAR repository](https://www.ecg-imaging.org/edgar-database)
 	│   └── data.mat         			# ECGI epicardial data for testing and demonstration
 	├── functions/                      		# Directory containing functions for generating synthetic subjects, filtering signals, and applying the TWA algorithm and MC-WindowSHAP
 	│   └── add_BW.m 				# Function for adding baseline noise
@@ -83,7 +92,52 @@ The repository is organized as follows:
 	│   └── spline_detrending_filter.m 		# Function for detrending the ECG signals
 	│   └── SRS.m 					# Function for segmenting T-waves with the Single Reference Segmentation method
 	├── LICENSE                     		# License information for the project
-	└── README.md                  		# This README file
+	└── README.md                  			# This README file
+
+
+## Results
+
+### 1. SRS Method Results
+
+When the code is executed, the user will be prompted with a figure that requires manual segmentation of a single beat from an ECG signal. This is done through an interactive window, where the user can zoom in for precision and press any keyboard button to start the segmentation process.
+
+- **Single Beat Segmentation**: 
+  - The user will be asked to select the starting and ending points of a single beat.
+	![Interactive figure](figures/SRS1.png)
+  - Once selected, a new figure will appear, requesting the segmentation of T-waves.
+  
+- **T-wave Segmentation**:
+  - The user will manually select the start and end points of the T-wave for a single ECG signal.
+	![Interactive figure](figures/SRS2.png)
+  - These manually selected points are then used to automatically segment T-waves in the remaining signals, taking into account the synchronous functioning of the human heart.
+
+### 2. TWA Detection Method Results
+
+Once the TWA detection algorithm has been applied, the following results will be generated:
+
+- **Latent Space Representation**:
+  - A figure displaying the latent space, where the community with detected TWA is highlighted in red, and the rest of the embedding is shown in green.
+	![Embedded space generated by UMAP](figures/embedded_space.png)
+  
+- **Epicardial Mesh Visualization**:
+  - A 3D figure of the epicardial mesh is shown, with the area affected by TWA colored either in red (if our method detects TWA) or purple (if our method does not detect TWA). This visualization allows the user to see not only whether TWA is present, but also the specific region of the heart where it is located.
+	![Epicardial mesh](figures/mesh.png)
+
+- **TWA Detection Confidence**:
+  - A graph is generated displaying the confidence interval (in green) and the empirical value (in either red or purple), explaining the decision of the algorithm regarding whether the subject has TWA or not.
+	![Bootstrap derived distribution](figures/distribution.png)
+
+- **TWA Pattern Visualization**:
+  - To enhance interpretability, the corresponding input signals (subtraction of even and odd T-waves) are shown for the community with TWA. This allows the user to observe the specific TWA pattern detected.
+	![Input signals](figures/signals.png)
+
+- **Explainability with Shapley Values**:
+  - Shapley values are used to provide further explainability of the model's decision. The ECG signals are divided into 5 windows, and the importance of different latent dimensions is highlighted.
+	![Shapley values](figures/shap1.png)
+  - The signals from the most important window, which contributed the most to projecting the ECGI data into the latent space for the TWA community, are also displayed.
+	![Important window according to MC-WindowSHAP](figures/shap2.png)
+
+These visualizations provide not only detection but also insights into how and why the TWA was detected, enhancing both interpretability and explainability of the results.
 
 ## License
 
@@ -101,11 +155,11 @@ The CC BY license allows you to:
 
 If you use this code in your research or find it helpful, please cite our papers, where this methods are explained:
 
-**Estela Sánchez-Carballo, Francisco Manuel Melgarejo-Meseguer, José Luis Rojo-Álvarez, Arcadi García-Alberola and Yoram Rudy**, "Single Reference Segmentation to Estimate T-Wave Alternans", *2023 Computing in Cardiology (CinC), Atlanta, GA, USA*, pp. 1-4, 2023, doi: 10.22489/CinC.2023.018.
+**Estela Sánchez-Carballo, Francisco Manuel Melgarejo-Meseguer, José Luis Rojo-Álvarez, Arcadi García-Alberola and Yoram Rudy**, "Single Reference Segmentation to Estimate T-Wave Alternans", *2023 Computing in Cardiology (CinC), Atlanta, GA, USA*, pp. 1-4, 2023, doi: [10.22489/CinC.2023.018](https://doi.org/10.22489/CinC.2023.018).
 
-**Estela Sánchez-Carballo, Francisco Manuel Melgarejo-Meseguer, Ramya Vijayakumar, Juan José Sánchez-Muñoz, Arcadi García-Alberola, Yoram Rudy and José Luis Rojo-Álvarez**, "Reference for Electrocardiographic Imaging-Based T-Wave Alternans Estimation", *IEEE Access*, vol. 12, pp. 118510-118524, 2024, doi: 10.1109/ACCESS.2024.3447114.
+**Estela Sánchez-Carballo, Francisco Manuel Melgarejo-Meseguer, Ramya Vijayakumar, Juan José Sánchez-Muñoz, Arcadi García-Alberola, Yoram Rudy and José Luis Rojo-Álvarez**, "Reference for Electrocardiographic Imaging-Based T-Wave Alternans Estimation", *IEEE Access*, vol. 12, pp. 118510-118524, 2024, doi: [10.1109/ACCESS.2024.3447114](https://doi.org/10.1109/ACCESS.2024.3447114).
 
-**Estela Sánchez-Carballo, Francisco Manuel Melgarejo-Meseguer, Ramya Vijayakumar, Juan José Sánchez-Muñoz, Arcadi García-Alberola, Yoram Rudy and José Luis Rojo-Álvarez**, "Interpretable Manifold Learning for T-Wave Alternans Assessment with Electrocardiographic Imaging", *submitted to Engineering Applications of Artificial Intelligence*.
+**Estela Sánchez-Carballo, Francisco Manuel Melgarejo-Meseguer, Ramya Vijayakumar, Juan José Sánchez-Muñoz, Arcadi García-Alberola, Yoram Rudy and José Luis Rojo-Álvarez**, "Interpretable Manifold Learning for T-Wave Alternans Assessment with Electrocardiographic Imaging", *submitted*.
 
 For further details on how to properly attribute this work, please refer to the [CC BY license summary](https://creativecommons.org/licenses/by/4.0/).
 
@@ -113,8 +167,10 @@ For further details on how to properly attribute this work, please refer to the 
 
 For any questions, suggestions and comments feel free to reach out:
 
-- **Estela Sánchez-Carballo**  
+- **Estela Sánchez-Carballo**
+  
   https://github.com/estelasc
+
   Email: estela.sanchezc@urjc.es
 
 You can also create an issue in this repository if you encounter any bugs or have suggestions for improvements.
