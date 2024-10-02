@@ -202,8 +202,6 @@ For any questions, suggestions and comments feel free to reach out:
 
   Email: estela.sanchezc@urjc.es
 
-  LinkedIn: [Estela Sánchez-Carballo](www.linkedin.com/in/estela-sánchez-carballo-1151a821b)
-
 You can also create an issue in this repository if you encounter any bugs or have suggestions for improvements.
 
 Thank you for your interest in this project!
