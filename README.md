@@ -138,12 +138,14 @@ Once the TWA detection algorithm has been applied, the following results will be
   - A figure displaying the latent space, where the community with detected TWA is highlighted either in red (if our method detects TWA) or purple (if our method does not detect TWA), and the rest of the embedding is shown in green.
   - A 3D figure of the epicardial mesh is shown, with the area affected by TWA colored either in red (if our method detects TWA) or purple (if our method does not detect TWA). This visualization allows the user to see not only whether TWA is present, but also the specific region of the heart where it is located.
 
-	<span>
-  	  <img src="figures/embedded_space.png" alt="Embedded space" width="30%"/>
-	</span><br>
-	<span>
-  	  <img src="figures/mesh.png" alt="Epicardial mesh" width="25%"/>
-	</span>
+	<div style="display: flex;">
+  	  <div style="padding-right: 20px;">
+    	    <img src="figures/embedded_space.png" alt="Embedded space" width="30%"/>
+  	  </div>
+  	  <div>
+    	    <img src="figures/mesh.png" alt="Epicardial mesh" width="25%"/>
+  	  </div>
+	</div>
 
 - **TWA Detection Confidence**:
   - A graph is generated displaying the confidence interval (in green) and the empirical value (in either red or purple), explaining the decision of the algorithm regarding whether the subject has TWA or not.
