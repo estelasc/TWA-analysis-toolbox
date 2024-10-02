@@ -114,16 +114,21 @@ When the code is executed, the user will be prompted with a figure that requires
 
 - **Single Beat Segmentation**: 
   - The user will be asked to select the starting and ending points of a single beat.
-	<img src="figures/SRS1.png" alt="Interactive figure" width="30%"/>
+
+	<img src="figures/SRS1.png" alt="Interactive figure" width="50%"/>
+
   - Once selected, a new figure will appear, requesting the segmentation of T-waves.
   
 - **T-wave Segmentation**:
   - The user will manually select the start and end points of the T-wave for a single ECG signal.
-	<img src="figures/SRS2.png" alt="Interactive figure" width="30%"/>
+
+	<img src="figures/SRS2.png" alt="Interactive figure" width="50%"/>
+
   - These manually selected points are then used to automatically segment T-waves in the remaining signals, taking into account the synchronous functioning of the human heart.
 
 Once the T-waves are segmented, even and odd T-wave templates are created for each mesh point. For each mesh point, the corresponding even and odd templates are subtracted from one another to generate **alternan signals**, which serve as the input for the TWA detection algorithm.
-	<img src="figures/TWAsignals.png" alt="Alternan signals" width="30%"/>
+
+	<img src="figures/TWAsignals.png" alt="Alternan signals" width="50%"/>
 
 ### 2. TWA Detection Method Results
 
@@ -132,27 +137,32 @@ Once the TWA detection algorithm has been applied, the following results will be
 - **Latent Space Representation** and **Epicardial Mesh Visualization**:
   - A figure displaying the latent space, where the community with detected TWA is highlighted either in red (if our method detects TWA) or purple (if our method does not detect TWA), and the rest of the embedding is shown in green.
   - A 3D figure of the epicardial mesh is shown, with the area affected by TWA colored either in red (if our method detects TWA) or purple (if our method does not detect TWA). This visualization allows the user to see not only whether TWA is present, but also the specific region of the heart where it is located.
+
 	<span>
-  	  <img src="figures/embedded_space.png" alt="Embedded space" width="30%" style="margin-right: 10px;"/>
+  	  <img src="figures/embedded_space.png" alt="Embedded space" width="30%" style="margin-right: 100px;"/>
 	</span>
 	<span>
-  	  <img src="figures/mesh.png" alt="Epicardial mesh" width="30%"/>
+  	  <img src="figures/mesh.png" alt="Epicardial mesh" width="20%"/>
 	</span>
 
 - **TWA Detection Confidence**:
   - A graph is generated displaying the confidence interval (in green) and the empirical value (in either red or purple), explaining the decision of the algorithm regarding whether the subject has TWA or not.
-	<img src="figures/distribution.png" alt="Bootstrap derived distribution" width="30%"/>
+	
+	<img src="figures/distribution.png" alt="Bootstrap derived distribution" width="50%"/>
 
 - **TWA Pattern Visualization**:
   - To enhance interpretability, the corresponding input signals (subtraction of even and odd T-waves) are shown for the community with TWA. This allows the user to observe the specific TWA pattern detected.
-	<img src="figures/signals.png" alt="Input signals" width="30%"/>
+
+	<img src="figures/signals.png" alt="Input signals" width="50%"/>
 
 - **Explainability with Shapley Values**:
   - Shapley values are used to provide further explainability of the model's decision. The ECG signals are divided into 5 windows, and the importance of different latent dimensions is highlighted.
-	<img src="figures/shap1.png" alt="Shapley values" width="30%"/>
+
+	<img src="figures/shap1.png" alt="Shapley values" width="50%"/>
 
   - The signals from the most important window, which contributed the most to projecting the ECGI data into the latent space for the TWA community, are also displayed.
-	<img src="figures/shap2.png" alt="Important window according to MC-WindowSHAP" width="30%"/>
+
+	<img src="figures/shap2.png" alt="Important window according to MC-WindowSHAP" width="50%"/>
 
 These visualizations provide not only detection but also insights into how and why the TWA was detected, enhancing both interpretability and explainability of the results.
 
