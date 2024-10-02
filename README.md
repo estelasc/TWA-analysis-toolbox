@@ -140,7 +140,7 @@ Once the TWA detection algorithm has been applied, the following results will be
 
 	<span>
   	  <img src="figures/embedded_space.png" alt="Embedded space" width="30%"/>
-	</span><br>
+	</span>
 	<span>
   	  <img src="figures/mesh.png" alt="Epicardial mesh" width="25%"/>
 	</span>
